@@ -14,17 +14,14 @@ ActiveRecord::Schema.define(version: 2021_05_04_180515) do
 
   create_table "games", force: :cascade do |t|
     t.integer "cardNumber"
+    t.integer "clickNumber", default: 0
+    t.integer "score"
     t.integer "player_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "players", force: :cascade do |t|
     t.integer "rank", default: 0
     t.string "name"
-    t.integer "score", default: 0
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
 end

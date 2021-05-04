@@ -3,7 +3,6 @@ class CreatePlayers < ActiveRecord::Migration[6.1]
     create_table :players do |t|
       t.integer :rank, default: 0 
       t.string :name
-      t.integer :score, default: 0
     end
   end
 end
