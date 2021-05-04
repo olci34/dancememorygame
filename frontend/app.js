@@ -3,7 +3,11 @@ const cardBoard = document.querySelector('div.card-board')
 fetchData()
 
 function fetchData() {
-    fetch('http://localhost:3000/players').then(resp => resp.json()).then(players => appendPlayers(players))
+    fetch('http://localhost:3000/players').then(resp => resp.json())
+                                          .then(players => { 
+                                                            let sortedPlayers = players.sort( (p1, p2) => p2.highest_score - p1.highest_score )
+                                                            return appendPlayers(sortedPlayers)
+                                                        })
 }
 
 function appendPlayers(players) {
