@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DanceMemory</title>
+        <link rel="stylesheet" href="app.css">
+    </head>
+    <body>
+        <div class='config'>
+            <div class='logo'>Logo</div>
+            <div class='player-info'>
+                <form>
+                    <label>Player Name:</label>
+                    <input name='player[name]'/><br>
+                    <label>Number of Cards</label>
+                    <input type='number' name='game[cardNumber]'/>
+                    <input type='submit' value='Start Game'/>
+                </form>
+            </div>
+            <div class='top-players'>
+                <strong>Top Players</strong>
+                <div class='players-chart'>
+                    <table class="players-table">
+                        <colgroup>
+                            <col class="playerRank">
+                            <col class="playerName">
+                            <col class="playerScore">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Player</th>
+                                <th>Score</th>
+                            </tr>
+                        </thead>
+                        <tbody class='players'>
+                            <tr>
+                                <td>1</td>
+                                <td>Olci</td>
+                                <td>364</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <script src='app.js'></script>
+    </body>
+</html> 
