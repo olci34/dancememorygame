@@ -1,4 +1,6 @@
 const topPlayersList = document.querySelector('tbody.players')
+const cardBoard = document.querySelector('div.card-board')
+fetchData()
 
 function fetchData() {
     fetch('http://localhost:3000/players').then(resp => resp.json()).then(players => appendPlayers(players))
@@ -14,4 +16,9 @@ function appendPlayers(players) {
     })
 }
 
-fetchData()
+const gameForm = document.getElementById('form')
+
+gameForm.addEventListener('submit', function(e) {
+    e.preventDefault()
+    cardBoard.innerHTML = '<h2>Cards are distributed</h2>'
+})
