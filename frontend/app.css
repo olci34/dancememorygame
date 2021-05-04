@@ -11,3 +11,14 @@ div.card-board {
     height: 100vh;
     background-color: wheat;
 }
+
+div.top-players {
+    text-align: center;
+}
+
+table.scores-table {
+    width: 100%;
+}
+th,tr {
+    text-align: center;
+}

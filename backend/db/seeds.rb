@@ -1,6 +1,6 @@
-p1 = Player.create(rank: 2, name:"olci")
-p2 = Player.create(rank: 3, name:"ali")
-p3 = Player.create(rank: 1, name:"mehmet")
+p1 = Player.create(rank: 2, name:"olci", highest_score: 30000)
+p2 = Player.create(rank: 3, name:"ali", highest_score: 29411)
+p3 = Player.create(rank: 1, name:"mehmet", highest_score: 40000)
 
 g1 = Game.create(cardNumber: 6, clickNumber: 20, score: 30000, player_id: 1)
 g2 = Game.create(cardNumber: 4, clickNumber: 14, score: 28571, player_id: 1)
