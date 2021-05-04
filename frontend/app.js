@@ -24,5 +24,22 @@ const gameForm = document.getElementById('form')
 
 gameForm.addEventListener('submit', function(e) {
     e.preventDefault()
-    cardBoard.innerHTML = '<h2>Cards are distributed</h2>'
+    createPlayerAndGame(e)
 })
+
+function createPlayerAndGame(e) {
+    const playerName = e.target.children[1].value
+    const gameCardNumber = e.target.children[4].value
+
+    const newPlayer = {player : { name: playerName }}
+    const configObj = {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(newPlayer)
+    }
+    fetch('http://localhost:3000/players', configObj).then(resp => { debugger }).then(json => {debugger})
+}
+
+function startGame() {
+    cardBoard.innerHTML = '<h2>Cards are distributed</h2>'
+}
