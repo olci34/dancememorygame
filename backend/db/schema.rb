@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_04_201336) do
+ActiveRecord::Schema.define(version: 2021_05_04_180515) do
 
   create_table "games", force: :cascade do |t|
-    t.integer "cardNumber"
-    t.integer "clickNumber", default: 0
+    t.integer "card_number"
+    t.integer "click_number", default: 0
     t.integer "score"
     t.integer "player_id"
   end
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2021_05_04_201336) do
   create_table "players", force: :cascade do |t|
     t.integer "rank", default: 0
     t.string "name"
-    t.integer "highest_score"
+    t.integer "highest_score", default: 0
   end
 
 end

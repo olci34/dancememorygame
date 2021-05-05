@@ -2,11 +2,17 @@ class PlayersController < ApplicationController
 
     def index
         players = Player.all
-        render json: players.to_json
+        render json: players
     end
 
     def create
-        binding.pry
+        newPlayer = Player.create(player_params)
+        render json: newPlayer
     end
     
+    private
+
+    def player_params
+        params.require(:player).permit(:name)
+    end
 end
