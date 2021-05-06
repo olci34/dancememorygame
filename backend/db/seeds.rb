@@ -8,3 +8,5 @@ g3 = Game.create(card_number: 10, click_number: 34, score: 29411, player_id: 2)
 g4 = Game.create(card_number: 6, click_number: 18, score:  33333, player_id: 3)
 g5 = Game.create(card_number: 6, click_number: 16, score:  37500, player_id: 3)
 g6 = Game.create(card_number: 4, click_number: 10, score:  40000, player_id: 3)
+
+
