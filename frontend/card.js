@@ -1,4 +1,6 @@
 let comparedCards = []
+let clicks = 0
+const clickBoard = document.getElementById('click-number')
 
 class Card {
     
@@ -28,6 +30,7 @@ class Card {
         cardBoard.append(flipCard)
 
         flipCardInner.addEventListener('click', function(e) {
+            clickBoard.innerText = `Clicks: ${++clicks}`
             if (comparedCards.length === 0) {
                 comparedCards.push(card)
                 comparedCards[0].flipFaceUp(e.currentTarget)
