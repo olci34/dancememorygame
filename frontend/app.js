@@ -20,30 +20,12 @@ function fetchData() {
                                                         })
 }
 
-
-
 gameForm.addEventListener('submit', function(e) {
     e.preventDefault()
-    createPlayer(e)
+    Player.createPlayer(e.target)
 })
 
-function createPlayer(e) {
-    const playerName = e.target.children[1].value
-    const gameCardNumber = parseInt(e.target.children[4].value, 10)
-    const newPlayer = {player: { name: playerName }} // game_attributes
-    const configPlayer = {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(newPlayer)
-    }
 
-    fetch('http://localhost:3000/players', configPlayer).then(resp => resp.json())
-                                                        .then(player => { 
-                                                                        setCards(gameCardNumber)
-                                                                        const currentPlayer = new Player(player.rank, player.name, player.highest_score)
-                                                                        currentPlayer.appendPlayer()
-                                                                    })
-}
 
 function setCards(cardNumber) {
     let randomCards = [...cards]
