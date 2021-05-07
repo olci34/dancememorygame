@@ -10,7 +10,6 @@ const cards = [
 
 const cardBoard = document.querySelector('div.card-board')
 
-
 class Card {
     
     constructor(sticker, matchID, uniq) {
@@ -20,7 +19,7 @@ class Card {
         this.faceUp = false
     }
 
-    static appendCard(card,id) {
+    appendCard() {
         const flipCard = document.createElement('div')
         flipCard.className = 'flip-card'
         const flipCardInner = document.createElement('div')
@@ -29,24 +28,26 @@ class Card {
         frontDiv.className = 'flip-card-front'
         const backDiv = document.createElement('div')
         backDiv.className = 'flip-card-back'
-        flipCardInner.title = card.matchID
-        flipCardInner.id = id
-        backDiv.innerHTML = `<img src='${card.sticker}'>`
+        flipCardInner.title = this.matchID
+        flipCardInner.id = this.uniq
+        backDiv.innerHTML = `<img src='${this.sticker}'>`
 
         flipCardInner.append(frontDiv)
         flipCardInner.append(backDiv)
         flipCard.append(flipCardInner)
         cardBoard.append(flipCard)
+        flipCardInner.addEventListener('click', Card.cardListener.bind(this))
+    }
 
-        flipCardInner.addEventListener('click', function(e) {
-            const clickBoard = document.getElementById('click-number')
+    static cardListener(e) {
+        const clickBoard = document.getElementById('click-number')
             clickBoard.innerText = `Clicks: ${++clicks}`
             if (comparedCards.length === 0) {
-                comparedCards.push(card)
+                comparedCards.push(this)
                 comparedCards[0].flipFaceUp(e.currentTarget)
             } else if (comparedCards.length === 1) {
-                if (card.faceUp === false) { 
-                    comparedCards.push(card)
+                if (this.faceUp === false) { 
+                    comparedCards.push(this)
                     comparedCards[1].flipFaceUp(e.currentTarget)
                     const matchResult = Card.matchCard(comparedCards[0], comparedCards[1])
                     const matchedDOMCards = document.querySelectorAll(`[title='${e.currentTarget.title}']`)
@@ -57,7 +58,7 @@ class Card {
                         })
                         comparedCards = []
                     } 
-                } else if (card.faceUp === true) {
+                } else if (this.faceUp === true) { // If clicked to a only faced up card
                     comparedCards[0].flipFaceDown(e.currentTarget)
                     comparedCards = []
                 }
@@ -65,12 +66,10 @@ class Card {
                 comparedCards.forEach(function(cardObj) {
                     cardObj.flipFaceDown(document.getElementById(`${cardObj.uniq}`))
                 })
-                comparedCards = [card]
+                comparedCards = [this]
                 comparedCards[0].flipFaceUp(e.currentTarget)
             }
             Card.victory()
-
-        })
     }
 
     static matchCard(card1,card2) {
@@ -125,7 +124,7 @@ class Card {
         
         for (let i = 0; i < shuffledCards.length; i++) {
             shuffledCards[i].uniq = i
-            Card.appendCard(shuffledCards[i], shuffledCards[i].uniq)
+            shuffledCards[i].appendCard()
         }
     }
 }
