@@ -13,6 +13,6 @@ class PlayersController < ApplicationController
     private
 
     def player_params
-        params.require(:player).permit(:name)
+        params.require(:player).permit(:name, games_attributes: [:card_number])
     end
 end
