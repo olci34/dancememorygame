@@ -6,15 +6,6 @@ class Player {
         this.highest_score = highest_score
     }
     
-    appendPlayer() {
-        const topPlayersList = document.querySelector('tbody.players')
-        const newRow = document.createElement('tr')
-        newRow.innerHTML = `<td>${this.rank}</td>
-                            <td>${this.name}</td>
-                            <td>${this.highest_score}</td>`
-        topPlayersList.appendChild(newRow)
-    }
-
     static createPlayer(target) {
         const playerName = target.children[1].value
         const gameCardNumber = parseInt(target.children[4].value, 10)
@@ -31,6 +22,15 @@ class Player {
                                                                             currentPlayer.appendPlayer()
                                                                         })
     }
+
+    appendPlayer() {
+        const topPlayersList = document.querySelector('tbody.players')
+        const newRow = document.createElement('tr')
+        newRow.innerHTML = `<td>${this.rank}</td>
+                            <td>${this.name}</td>
+                            <td>${this.highest_score}</td>`
+        topPlayersList.appendChild(newRow)
+        }
 
     calculateHighestScore() {
         // fetch the player's games scores and find the highest one

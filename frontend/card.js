@@ -36,7 +36,7 @@ class Card {
         flipCardInner.append(backDiv)
         flipCard.append(flipCardInner)
         cardBoard.append(flipCard)
-        flipCardInner.addEventListener('click', Card.cardListener.bind(this))
+        flipCardInner.addEventListener('click', Card.cardListener.bind(this))  // BLOG POST bind(this)
     }
 
     static cardListener(e) {
@@ -69,7 +69,12 @@ class Card {
                 comparedCards = [this]
                 comparedCards[0].flipFaceUp(e.currentTarget)
             }
-            Card.victory()
+            if (Card.victory()) {
+                fetch('http://localhost:3000/games').then(resp => resp.json()).then(function(games) {
+                    const currentPlayerName = document.querySelector('#player-name').value
+                    debugger
+                })
+            }
     }
 
     static matchCard(card1,card2) {
@@ -106,9 +111,9 @@ class Card {
             congratDiv.append(congratLabelDiv,gameSum)
             cardBoard.innerHTML = ''
             cardBoard.append(congratDiv)
+            return true
         }
-
-        //Post req
+        return false
     }
 
     static setCards(cardNumber) {

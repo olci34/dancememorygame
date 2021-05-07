@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2021_05_04_180515) do
   create_table "games", force: :cascade do |t|
     t.integer "card_number"
     t.integer "click_number", default: 0
-    t.integer "score"
+    t.integer "score", default: 0
     t.integer "player_id"
   end
 
