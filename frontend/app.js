@@ -13,23 +13,14 @@ function fetchData() {
     fetch('http://localhost:3000/players').then(resp => resp.json())
                                           .then(players => { 
                                                             let sortedPlayers = players.sort( (p1, p2) => p2.highest_score - p1.highest_score )
-                                                            return appendPlayers(sortedPlayers)
+                                                            sortedPlayers.forEach(function(player) {
+                                                                const newPlayer = new Player(player.rank, player.name, player.highest_score)
+                                                                newPlayer.appendPlayer()
+                                                            })
                                                         })
 }
 
-function appendPlayers(players) {
-    players.map(function(player) {
-        appendPlayer(player)
-    })
-}
 
-function appendPlayer(player) {
-    const newRow = document.createElement('tr')
-    newRow.innerHTML = `<td>${player.rank}</td>
-                        <td>${player.name}</td>
-                        <td>${player.highest_score}`
-    topPlayersList.appendChild(newRow)
-}
 
 gameForm.addEventListener('submit', function(e) {
     e.preventDefault()
@@ -49,7 +40,8 @@ function createPlayer(e) {
     fetch('http://localhost:3000/players', configPlayer).then(resp => resp.json())
                                                         .then(player => { 
                                                                         setCards(gameCardNumber)
-                                                                        return appendPlayer(player)
+                                                                        const currentPlayer = new Player(player.rank, player.name, player.highest_score)
+                                                                        currentPlayer.appendPlayer()
                                                                     })
 }
 
