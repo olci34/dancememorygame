@@ -26,8 +26,7 @@ class Player {
         }
     
         fetch('http://localhost:3000/players', configPlayer).then(resp => resp.json())
-                                                            .then(player => { 
-                                                                            setCards(gameCardNumber)
+                                                            .then(player => {
                                                                             const currentPlayer = new Player(player.rank, player.name, player.highest_score)
                                                                             currentPlayer.appendPlayer()
                                                                         })

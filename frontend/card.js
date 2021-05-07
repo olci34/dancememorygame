@@ -1,6 +1,15 @@
 let comparedCards = []
 let clicks = 0
-const clickBoard = document.getElementById('click-number')
+const cards = [
+                {sticker:'https://media.giphy.com/media/SUtvUAbKeBXiVdqCMB/giphy.gif', matchID: 1}, 
+                {sticker:'https://media.giphy.com/media/47GcWwJdOydNTuufsp/giphy.gif', matchID: 2},
+                {sticker:'https://media.giphy.com/media/TeBpzQZRaBIC4/giphy.gif', matchID: 3},
+                {sticker:'https://media.giphy.com/media/wn8rVP7qC8TNC/giphy.gif', matchID: 4},
+                {sticker:'https://media.giphy.com/media/p3BhK7nNlB9AMJrtYh/giphy.gif', matchID: 5}
+            ]
+
+const cardBoard = document.querySelector('div.card-board')
+
 
 class Card {
     
@@ -30,6 +39,7 @@ class Card {
         cardBoard.append(flipCard)
 
         flipCardInner.addEventListener('click', function(e) {
+            const clickBoard = document.getElementById('click-number')
             clickBoard.innerText = `Clicks: ${++clicks}`
             if (comparedCards.length === 0) {
                 comparedCards.push(card)
@@ -97,6 +107,25 @@ class Card {
             congratDiv.append(congratLabelDiv,gameSum)
             cardBoard.innerHTML = ''
             cardBoard.append(congratDiv)
+        }
+    }
+
+    static setCards(cardNumber) {
+        let randomCards = [...cards]
+        let pairCards = []
+    
+        for (let i = 0; i < cardNumber/2; i++) {
+            const randomCard = randomCards.splice(Math.floor(Math.random() * randomCards.length),1)[0];
+            const newCard = new Card(randomCard.sticker, randomCard.matchID)
+            const matchCard = new Card(randomCard.sticker, randomCard.matchID)
+            pairCards.push(newCard,matchCard)
+        }
+    
+        const shuffledCards = shuffle(pairCards)
+        
+        for (let i = 0; i < shuffledCards.length; i++) {
+            shuffledCards[i].uniq = i
+            Card.appendCard(shuffledCards[i], shuffledCards[i].uniq)
         }
     }
 }

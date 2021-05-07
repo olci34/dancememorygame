@@ -1,11 +1,4 @@
-const topPlayersList = document.querySelector('tbody.players')
-const cardBoard = document.querySelector('div.card-board')
 const gameForm = document.getElementById('form')
-const cards =[{sticker:'https://media.giphy.com/media/SUtvUAbKeBXiVdqCMB/giphy.gif', matchID: 1}, 
-              {sticker:'https://media.giphy.com/media/47GcWwJdOydNTuufsp/giphy.gif', matchID: 2},
-              {sticker:'https://media.giphy.com/media/TeBpzQZRaBIC4/giphy.gif', matchID: 3},
-              {sticker:'https://media.giphy.com/media/wn8rVP7qC8TNC/giphy.gif', matchID: 4},
-              {sticker:'https://media.giphy.com/media/p3BhK7nNlB9AMJrtYh/giphy.gif', matchID: 5}]
 
 fetchData()
 
@@ -23,28 +16,8 @@ function fetchData() {
 gameForm.addEventListener('submit', function(e) {
     e.preventDefault()
     Player.createPlayer(e.target)
+    Card.setCards(parseInt(e.target.children[4].value, 10))
 })
-
-
-
-function setCards(cardNumber) {
-    let randomCards = [...cards]
-    let shuffledCards = []
-
-    for (let i = 0; i < cardNumber/2; i++) {
-        const randomCard = randomCards.splice(Math.floor(Math.random() * randomCards.length),1)[0];
-        const newCard = new Card(randomCard.sticker, randomCard.matchID)
-        const matchCard = new Card(randomCard.sticker, randomCard.matchID)
-        shuffledCards.push(newCard,matchCard)
-    }
-
-    shuffledCards = shuffle(shuffledCards)
-    
-    for (let i = 0; i < shuffledCards.length; i++) {
-        shuffledCards[i].uniq = i
-        Card.appendCard(shuffledCards[i], shuffledCards[i].uniq)
-    }
-}
 
 function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
