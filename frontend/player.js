@@ -18,7 +18,7 @@ class Player {
     static createPlayer(target) {
         const playerName = target.children[1].value
         const gameCardNumber = parseInt(target.children[4].value, 10)
-        const newPlayer = {player: { name: playerName }} // game_attributes
+        const newPlayer = {player: {name: playerName, games_attributes: {"0": {card_number: gameCardNumber}}}} // game_attributes
         const configPlayer = {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
@@ -30,5 +30,9 @@ class Player {
                                                                             const currentPlayer = new Player(player.rank, player.name, player.highest_score)
                                                                             currentPlayer.appendPlayer()
                                                                         })
+    }
+
+    calculateHighestScore() {
+        // fetch the player's games scores and find the highest one
     }
 }

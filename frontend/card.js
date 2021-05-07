@@ -107,6 +107,8 @@ class Card {
             cardBoard.innerHTML = ''
             cardBoard.append(congratDiv)
         }
+
+        //Post req
     }
 
     static setCards(cardNumber) {
