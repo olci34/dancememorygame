@@ -58,6 +58,8 @@ class Card {
                 comparedCards = [card]
                 comparedCards[0].flipFaceUp(e.currentTarget)
             }
+            Card.victory()
+
         })
     }
 
@@ -77,5 +79,24 @@ class Card {
     flipFaceDown(target) {
         target.className = 'flip-card-outer'
         this.faceUp = false
+    }
+
+    static victory() {
+        const DOMCards = document.querySelectorAll('.flip-card')
+        const cardClassNames = [...DOMCards].map(card => card.children[0].className)
+        const done = cardClassNames.every((name) => name === 'flip-card-inner')
+        if (done) {
+            const congratDiv = document.createElement('div')
+            congratDiv.className = 'congrat-div'
+            const congratLabelDiv = document.createElement('div')
+            congratLabelDiv.className = 'congrat-label'
+            congratLabelDiv.innerHTML = '<h1>Congratulations</h1>'
+            const gameSum = document.createElement('div')
+            gameSum.className = 'game-sum'
+            gameSum.innerHTML =  "<h1>Player Name</h1><br><h3>Score: </h3><h3>Rank:</h3>"
+            congratDiv.append(congratLabelDiv,gameSum)
+            cardBoard.innerHTML = ''
+            cardBoard.append(congratDiv)
+        }
     }
 }
