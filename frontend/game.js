@@ -10,23 +10,18 @@ class Game {
         this.score = (this.card_number * 100000) / this.click_number
     }
 
-    patchGame() {
+    static patchGame() {
         const numberOfClicks = parseInt(document.getElementById('click-number').textContent, 10)
+        const score = parseInt(document.getElementById('score').textContent,10)
         const gameID = document.getElementById('gameID').value
-        const gameObj = {game: {click_number: numberOfClicks}}
+        const gameObj = {game: {click_number: numberOfClicks, score: score}}
         const configGame = {
-            method: 'PATCH',
-            headers: {'Content-Type': 'application/json',
-                      'Accept':'application/json'},
+            method: "PATCH",
+            headers: {"Content-Type": "application/json",
+                      "Accept": "application/json"},
             body: JSON.stringify(gameObj)
         }
-        fetch(`http://localhost:3000/games/${gameID}`, configGame).then(resp => resp.json())
-                                            .then(function(games) {
-                                                debugger
-                                                const currentGame = games.filter(game => game.id === gameID)
-                                                currentGame.finalizeScore()
-                                                debugger
-                                            })
+        fetch(`http://localhost:3000/games/${gameID}`, configGame).then(resp => resp.text()).then(json => {debugger})
 
-                                        }
+    }
 }

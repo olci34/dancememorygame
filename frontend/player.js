@@ -15,7 +15,6 @@ class Player {
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(newPlayer)
         }
-    
         fetch('http://localhost:3000/players', configPlayer).then(resp => resp.json())
                                                             .then(player => {
                                                                             const gameID = document.getElementById('gameID')
