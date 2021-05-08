@@ -3,12 +3,13 @@ div.config {
     height: 100vh;
     background-color: cadetblue;
     float: left;
+    margin-right: 10px;
 }
 
 div.card-board {
     float: right;
-    width: 80%;
-    height: 100vh;
+    width: 79%;
+    height: 80vh;
     background-color: wheat;
 }
 
@@ -83,11 +84,30 @@ img {
 }
 
 .congrat-div {
-    border: solid 6px darksalmon;
+  color: seashell;
+    border: solid 6px salmon;
     height: 300px;
     width: 300px;
     text-align: center;
     margin-left: 30%;
     margin-top: 20%;
     background-color: cadetblue;
+}
+
+.click-counter {
+  height: 10vh;
+  color: seashell;
+  float: right;
+  width: 79%;
+  text-align: center;
+  background-color:salmon;
+}
+
+.score {
+  height: 10vh;
+  color: seashell;
+  float: right;
+  width: 79%;
+  text-align: center;
+  background-color:salmon;
 }

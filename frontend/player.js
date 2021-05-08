@@ -18,6 +18,9 @@ class Player {
     
         fetch('http://localhost:3000/players', configPlayer).then(resp => resp.json())
                                                             .then(player => {
+                                                                            const gameID = document.getElementById('gameID')
+                                                                            gameID.value = player.games[player.games.length - 1].id
+                                                                            document.querySelector('.click-counter').append(gameID)
                                                                             const currentPlayer = new Player(player.rank, player.name, player.highest_score)
                                                                             currentPlayer.appendPlayer()
                                                                         })

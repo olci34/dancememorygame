@@ -41,7 +41,7 @@ class Card {
 
     static cardListener(e) {
         const clickBoard = document.getElementById('click-number')
-            clickBoard.innerText = `Clicks: ${++clicks}`
+            clickBoard.innerText = `${++clicks}`
             if (comparedCards.length === 0) {
                 comparedCards.push(this)
                 comparedCards[0].flipFaceUp(e.currentTarget)
@@ -52,6 +52,11 @@ class Card {
                     const matchResult = Card.matchCard(comparedCards[0], comparedCards[1])
                     const matchedDOMCards = document.querySelectorAll(`[title='${e.currentTarget.title}']`)
                     if (matchResult) {
+
+                        const scoreBoard = document.getElementById('score')
+                        const score = Math.floor((parseInt(scoreBoard.textContent,10)) + 200000 / clicks)
+                        scoreBoard.textContent = `${score}`
+
                         matchedDOMCards.forEach(function(DOMCard) {
                         DOMCard.style.pointerEvents = 'none'
                         DOMCard.children[1].style.backgroundColor = 'rgba(153, 205, 50, 0.267)'
@@ -70,10 +75,7 @@ class Card {
                 comparedCards[0].flipFaceUp(e.currentTarget)
             }
             if (Card.victory()) {
-                fetch('http://localhost:3000/games').then(resp => resp.json()).then(function(games) {
-                    const currentPlayerName = document.querySelector('#player-name').value
-                    debugger
-                })
+                Game.patchGame()
             }
     }
 
