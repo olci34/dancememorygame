@@ -13,6 +13,12 @@ class GamesController < ApplicationController
     def update
         game = Game.find_by(id: params[:id])
         game.update(game_params)
+        game.player.latest_score = game.score
+        game.player.save
+        Player.all.sort_by(&:latest_score).reverse.each.with_index(1) do |player,index|
+            player.rank = index
+            player.save
+        end
     end
 
     private

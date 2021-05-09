@@ -9,6 +9,11 @@ class PlayersController < ApplicationController
         newPlayer = Player.create(player_params)
         render json: newPlayer
     end
+
+    def show
+        player = Player.find_by(id: params[:id])
+        render json: player
+    end
     
     private
 

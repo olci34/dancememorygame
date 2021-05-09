@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2021_05_04_180515) do
   create_table "players", force: :cascade do |t|
     t.integer "rank", default: 0
     t.string "name"
-    t.integer "highest_score", default: 0
+    t.integer "latest_score", default: 0
   end
 
 end

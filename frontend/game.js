@@ -15,13 +15,12 @@ class Game {
         const score = parseInt(document.getElementById('score').textContent,10)
         const gameID = document.getElementById('gameID').value
         const gameObj = {game: {click_number: numberOfClicks, score: score}}
-        const configGame = {
+        const options = {
             method: "PATCH",
             headers: {"Content-Type": "application/json",
                       "Accept": "application/json"},
             body: JSON.stringify(gameObj)
         }
-        fetch(`http://localhost:3000/games/${gameID}`, configGame).then(resp => resp.text()).then(json => {debugger})
-
+        fetch(`http://localhost:3000/games/${gameID}`, options).then(resp => { debugger }) // NEVER HITS THIS debugger    
     }
 }
