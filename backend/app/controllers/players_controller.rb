@@ -6,8 +6,12 @@ class PlayersController < ApplicationController
     end
 
     def create
-        newPlayer = Player.create(player_params)
-        render json: newPlayer
+        newPlayer = Player.new(player_params)
+        if newPlayer.save
+            render json: newPlayer
+        else
+            render json: {message: newPlayer.errors.full_messages}
+        end
     end
 
     def show

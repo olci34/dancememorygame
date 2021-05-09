@@ -15,15 +15,22 @@ class Player {
             headers: {'Content-Type': 'application/json', "Accept": "application/json"},
             body: JSON.stringify(newPlayer)
         }
-        fetch('http://localhost:3000/players', configPlayer).then(resp => resp.json())
-                                                            .then(player => {
-                                                                            const gameID = document.getElementById('gameID')
-                                                                            const lastGame = player.games[player.games.length - 1]
-                                                                            gameID.value = lastGame.id
-                                                                            document.querySelector('.click-counter').append(gameID)
-                                                                            const currentPlayer = new Player(player.rank, player.name, lastGame.score)
-                                                                            currentPlayer.appendPlayer()
-                                                                        })
+           fetch('http://localhost:3000/players', configPlayer)
+           .then(resp => resp.json())
+           .then(player => {
+               if (player.id) {
+                    const gameID = document.getElementById('gameID')
+                    const lastGame = player.games[player.games.length - 1]
+                    gameID.value = lastGame.id
+                    document.querySelector('.click-counter').append(gameID)
+                    const currentPlayer = new Player(player.rank, player.name, lastGame.score)
+                    currentPlayer.appendPlayer() 
+                    Card.setCards(parseInt(target.children[4].value, 10))
+                    disableConfig(true)
+                } else {
+                   throw new Error(player.message) /// add alert DOM
+                }
+           })  
     }
 
     appendPlayer() {

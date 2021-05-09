@@ -17,8 +17,6 @@ function fetchData() {
 gameForm.addEventListener('submit', function(e) {
     e.preventDefault()
     Player.createPlayer(e.target)
-    Card.setCards(parseInt(e.target.children[4].value, 10))
-    disableConfig(true)
 })
 
 function disableConfig(value) {
