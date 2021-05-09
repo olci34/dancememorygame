@@ -19,6 +19,7 @@ class GamesController < ApplicationController
             player.rank = index
             player.save
         end
+        render json: game
     end
 
     private

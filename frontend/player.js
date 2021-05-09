@@ -23,7 +23,6 @@ class Player {
                                                                             document.querySelector('.click-counter').append(gameID)
                                                                             const currentPlayer = new Player(player.rank, player.name, lastGame.score)
                                                                             currentPlayer.appendPlayer()
-                                                                            const currentGame = new Game(gameCardNumber,0,0)
                                                                         })
     }
 
@@ -35,8 +34,4 @@ class Player {
                             <td>${this.latest_score}</td>`
         topPlayersList.appendChild(newRow)
         }
-
-    calculateHighestScore() {
-        // fetch the player's games scores and find the highest one
-    }
 }

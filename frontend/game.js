@@ -21,6 +21,6 @@ class Game {
                       "Accept": "application/json"},
             body: JSON.stringify(gameObj)
         }
-        fetch(`http://localhost:3000/games/${gameID}`, options).then(resp => { debugger }) // NEVER HITS THIS debugger    
+        fetch(`http://localhost:3000/games/${gameID}`, options).then(resp => resp.json()).then(console.log)
     }
 }
