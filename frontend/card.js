@@ -74,7 +74,7 @@ class Card {
                 comparedCards = [this]
                 comparedCards[0].flipFaceUp(e.currentTarget)
             }
-            if (Card.victory()) {
+            if (Game.victory()) {
                 Game.patchGame()
             }
     }
@@ -91,38 +91,6 @@ class Card {
     flipFaceDown(target) {
         target.className = 'flip-card-outer'
         this.faceUp = false
-    }
-
-    static victory() {
-        const DOMCards = document.querySelectorAll('.flip-card')
-        const cardClassNames = [...DOMCards].map(card => card.children[0].className)
-        const done = cardClassNames.every((name) => name === 'flip-card-inner')
-        if (done) {
-            Card.appendCongrats()
-            return true
-        } else {
-            return false
-        }
-    }
-
-    static appendCongrats() {
-        const playerName = document.getElementById('player-name').value
-        const score = document.getElementById('score').textContent
-        const congratDiv = document.createElement('div')
-        congratDiv.className = 'congrat-div'
-        const congratLabelDiv = document.createElement('div')
-        congratLabelDiv.className = 'congrat-label'
-        congratLabelDiv.innerHTML = '<h1>Congratulations</h1>'
-        const gameSum = document.createElement('div')
-        gameSum.className = 'game-sum'
-        gameSum.innerHTML =  `<h1>${playerName}</h1><br><h2>Your Score: ${score}</h2>`
-        const newGameButton = document.createElement('button')
-        newGameButton.id = 'new-game'
-        newGameButton.innerText = 'New Game'
-        newGameButton.addEventListener('click', setNewGame)
-        congratDiv.append(congratLabelDiv,gameSum,newGameButton)
-        cardBoard.innerHTML = ''
-        cardBoard.append(congratDiv)
     }
 
     static setCards(cardNumber) {

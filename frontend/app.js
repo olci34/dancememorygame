@@ -36,17 +36,3 @@ function shuffle(array) {
     }
     return array
 }
-
-function setNewGame() {
-    cardBoard.innerHTML = ''
-    const top5 = document.querySelector('.players')
-    top5.innerHTML = ''
-    const score = document.getElementById('score')
-    score.innerText = '0'
-    const clickNumber = document.getElementById('click-number')
-    clickNumber.innerText = '0'
-    const cardsNumber = document.getElementById('numberOfCards')
-    cardsNumber.value = ''
-    fetchData()
-    disableConfig(false)
-}
