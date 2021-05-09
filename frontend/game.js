@@ -6,10 +6,6 @@ class Game {
         this.score = score
     }
 
-    finalizeScore() {
-        this.score = (this.card_number * 100000) / this.click_number
-    }
-
     static patchGame() {
         const numberOfClicks = parseInt(document.getElementById('click-number').textContent, 10)
         const score = parseInt(document.getElementById('score').textContent,10)
@@ -25,14 +21,15 @@ class Game {
     }
 
     static showGameResults(game) {
+        fetchData()
         const newGameForm = document.createElement('form')
         newGameForm.id = 'new-game-form'
         const newGameInput = document.createElement('input')
         newGameInput.id = 'new-game-card-number'
-        newGameInput.placeholder = 'Enter new game card number'
+        newGameInput.placeholder = 'Enter card quantity'
         const newGameButton = document.createElement('input')
         newGameButton.type = 'submit'
-        newGameButton.innerText = 'New Game'
+        newGameButton.value = 'New Game'
         const congratDiv = document.createElement('div')
         congratDiv.className = 'congrat-div'
         const congratLabelDiv = document.createElement('div')
@@ -52,6 +49,8 @@ class Game {
     static setNewGame(e) {
         e.preventDefault()
         ///  MAKE A GAME POST REQUEST
+        clicks = 0
+        const gameID = document.getElementById('gameID')
         const playerName = e.target.children[0].children[0].textContent
         const newGameCardNumber = e.target.children[1].value
         const gameObj = {game: {card_number: newGameCardNumber}, player: {name: playerName}}
@@ -61,18 +60,15 @@ class Game {
             body: JSON.stringify(gameObj)
         }
 
-        fetch('http://localhost:3000/games',configGame).then(resp => resp.json()).then(console.log)
-        cardBoard.innerHTML = ''
-        const top5 = document.querySelector('.players')
-        top5.innerHTML = ''
-        const score = document.getElementById('score')
-        score.innerText = '0'
-        const clickNumber = document.getElementById('click-number')
-        clickNumber.innerText = '0'
-        const cardsNumber = document.getElementById('numberOfCards')
-        cardsNumber.value = ''
-        fetchData()
-        disableConfig(false)
+        fetch('http://localhost:3000/games',configGame)
+        .then(resp => resp.json())
+        .then(function(game){
+            gameID.value = game.id
+            fetchData()
+            Card.setCards(game.card_number)
+            disableConfig(true)
+            return
+        })
     }
 
     static victory() {

@@ -3,6 +3,8 @@ const gameForm = document.getElementById('form')
 fetchData()
 
 function fetchData() {
+    const top5 = document.querySelector('.players')
+    top5.innerHTML = ''
     fetch('http://localhost:3000/players').then(resp => resp.json())
                                           .then(players => { 
                                                             let sortedPlayers = players.sort( (p1, p2) => p1.rank - p2.rank)

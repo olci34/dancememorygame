@@ -87,10 +87,8 @@ img {
   color: seashell;
     border: solid 6px salmon;
     height: 300px;
-    width: 300px;
     text-align: center;
-    margin-left: 30%;
-    margin-top: 20%;
+    margin-top: 10%;
     background-color: cadetblue;
 }
 
@@ -114,4 +112,8 @@ img {
 
 .your-score {
   padding-top: 60px;
+}
+
+.logo, .player-info, .top-players {
+  min-width: 100%;
 }

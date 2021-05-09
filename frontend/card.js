@@ -96,6 +96,14 @@ class Card {
     static setCards(cardNumber) {
         let randomCards = [...cards]
         let pairCards = []
+
+        cardBoard.innerHTML = ''
+        const score = document.getElementById('score')
+        score.innerText = '0'
+        const clickNumber = document.getElementById('click-number')
+        clickNumber.innerText = '0'
+        const cardsNumber = document.getElementById('numberOfCards')
+        cardsNumber.value = ''
     
         for (let i = 0; i < cardNumber/2; i++) {
             const randomCard = randomCards.splice(Math.floor(Math.random() * randomCards.length),1)[0];
