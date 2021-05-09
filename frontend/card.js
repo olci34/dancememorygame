@@ -36,10 +36,10 @@ class Card {
         flipCardInner.append(backDiv)
         flipCard.append(flipCardInner)
         cardBoard.append(flipCard)
-        flipCardInner.addEventListener('click', Card.cardListener.bind(this))  // BLOG POST bind(this)
+        flipCardInner.addEventListener('click', this.cardListener.bind(this))  // BLOG POST bind(this)
     }
 
-    static cardListener(e) {
+    cardListener(e) {
         const clickBoard = document.getElementById('click-number')
             clickBoard.innerText = `${++clicks}`
             if (comparedCards.length === 0) {
