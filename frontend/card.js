@@ -5,7 +5,10 @@ const cards = [
                 {sticker:'https://media.giphy.com/media/47GcWwJdOydNTuufsp/giphy.gif', matchID: 2},
                 {sticker:'https://media.giphy.com/media/TeBpzQZRaBIC4/giphy.gif', matchID: 3},
                 {sticker:'https://media.giphy.com/media/wn8rVP7qC8TNC/giphy.gif', matchID: 4},
-                {sticker:'https://media.giphy.com/media/p3BhK7nNlB9AMJrtYh/giphy.gif', matchID: 5}
+                {sticker:'https://media.giphy.com/media/p3BhK7nNlB9AMJrtYh/giphy.gif', matchID: 5},
+                {sticker:'https://media.giphy.com/media/5fBH6zrcIiOs65zXCtG/giphy.gif', matchID: 6},
+                {sticker:'https://media.giphy.com/media/dQpqkxXyPvb2iImius/giphy.gif', matchID: 7},
+                {sticker:'https://media.giphy.com/media/BMzLC8TYr7489CAjPM/giphy.gif', matchID: 8}
             ]
 
 const cardBoard = document.querySelector('div.card-board')

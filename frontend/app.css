@@ -1,14 +1,14 @@
 div.config {
-    width: 20%;
+    color: seashell;
+    width: 15%;
     height: 100vh;
     background-color: cadetblue;
     float: left;
-    margin-right: 10px;
 }
 
 div.card-board {
     float: right;
-    width: 79%;
+    width: 85%;
     height: 80vh;
     background-color: wheat;
 }
@@ -16,8 +16,8 @@ div.card-board {
 .flip-card {
     float: left;
     background-color: transparent;
-    width: 180px;
-    height: 100px;
+    width: 200px;
+    height: 260px;
     margin: 8px;
     perspective: 1000px; /* Remove this if you don't want the 3D effect */
   }
@@ -69,6 +69,7 @@ div.card-board {
 
 div.top-players {
     text-align: center;
+    margin-top: 80px;
 }
 
 table.scores-table {
@@ -84,9 +85,9 @@ img {
 }
 
 .congrat-div {
-  color: seashell;
+    color: seashell;
     border: solid 6px salmon;
-    height: 300px;
+    padding-bottom: 30px;
     text-align: center;
     margin-top: 10%;
     background-color: cadetblue;
@@ -96,7 +97,7 @@ img {
   height: 10vh;
   color: seashell;
   float: right;
-  width: 79%;
+  width: 85%;
   text-align: center;
   background-color:salmon;
 }
@@ -105,7 +106,7 @@ img {
   height: 10vh;
   color: seashell;
   float: right;
-  width: 79%;
+  width: 85%;
   text-align: center;
   background-color:salmon;
 }
@@ -114,6 +115,19 @@ img {
   padding-top: 60px;
 }
 
-.logo, .player-info, .top-players {
+.player-info, .top-players {
   min-width: 100%;
+  margin-top: 60px;
+  text-align: center;
 }
+
+#new-game-card-number {
+  width: 100px;
+}
+
+.logo {
+  text-align: center;
+  margin-top: 60px;
+  height: 100px;
+}
+

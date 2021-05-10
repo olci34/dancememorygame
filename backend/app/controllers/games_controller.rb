@@ -21,16 +21,15 @@ class GamesController < ApplicationController
         render json: game
     end
 
-    def update
+    def update   ## REARRANGE FOR FEWER DATABASE QUERY
         game = Game.find_by(id: params[:id])
         game.update(game_params)
         game.player.latest_score = game.score
         game.player.save
-        Player.all.sort_by(&:latest_score).reverse.slice(0,5).each.with_index(1) do |player,index|
-            player.rank = index
-            player.save
+        Player.order(latest_score: :desc).each.with_index(1) do |player,index|
+            player.update(rank: index)
         end
-        render json: game
+        render json: Game.find_by(id: game.id)
     end
 
     private

@@ -7,15 +7,17 @@ class Player {
     }
     
     static createPlayer(target) {
-        const playerName = target.children[1].value
-        const gameCardNumber = parseInt(target.children[4].value, 10)
+        debugger
+        const playerName = target.children[2].value
+        const gameCardNumber = parseInt(target.children[6].value, 10)
         const newPlayer = {player: {name: playerName, games_attributes: {"0": {card_number: gameCardNumber}}}} // game_attributes
         const configPlayer = {
             method: 'POST',
             headers: {'Content-Type': 'application/json', "Accept": "application/json"},
             body: JSON.stringify(newPlayer)
         }
-           fetch('http://localhost:3000/players', configPlayer)
+        
+            fetch('http://localhost:3000/players', configPlayer)
            .then(resp => resp.json())
            .then(player => {
                if (player.id) {
@@ -25,12 +27,12 @@ class Player {
                     document.querySelector('.click-counter').append(gameID)
                     const currentPlayer = new Player(player.rank, player.name, lastGame.score)
                     currentPlayer.appendPlayer() 
-                    Card.setCards(parseInt(target.children[4].value, 10))
-                    disableConfig(true)
+                    Card.setCards(gameCardNumber)
+                    disableConfig(false)
                 } else {
                    throw new Error(player.message) /// add alert DOM
                 }
-           })  
+           }).catch(err => alert(err))
     }
 
     appendPlayer() {

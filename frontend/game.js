@@ -17,16 +17,19 @@ class Game {
                       "Accept": "application/json"},
             body: JSON.stringify(gameObj)
         }
-        fetch(`http://localhost:3000/games/${gameID}`, options).then(resp => resp.json()).then(game => this.showGameResults(game))
+        fetch(`http://localhost:3000/games/${gameID}`, options).then(resp => resp.json()).then(game => setTimeout(() => this.showGameResults(game), 1000))
     }
 
     static showGameResults(game) {
-        fetchData()
         const newGameForm = document.createElement('form')
         newGameForm.id = 'new-game-form'
         const newGameInput = document.createElement('input')
+        newGameInput.type = 'number'
+        newGameInput.max = '16'
+        newGameInput.min = '4'
+        newGameInput.step = '2'
         newGameInput.id = 'new-game-card-number'
-        newGameInput.placeholder = 'Enter card quantity'
+        newGameInput.placeholder = 'Card quantity'
         const newGameButton = document.createElement('input')
         newGameButton.type = 'submit'
         newGameButton.value = 'New Game'
@@ -37,13 +40,14 @@ class Game {
         congratLabelDiv.innerHTML = '<h1>Congratulations</h1>'
         const gameSum = document.createElement('div')
         gameSum.className = 'game-sum'
-        gameSum.innerHTML =  `<h1>${game.player.name}</h1><br><h2>Your Score: ${game.score}</h2>`
+        gameSum.innerHTML =  `<h1>${game.player.name}</h1><br><h2>Your Score: ${game.score}</h2><br><h2>Your Rank: ${game.player.rank}</h2>`
         
         newGameForm.addEventListener('submit', Game.setNewGame)
         newGameForm.append(gameSum,newGameInput,newGameButton)
         congratDiv.append(congratLabelDiv,newGameForm)
         cardBoard.innerHTML = ''
         cardBoard.append(congratDiv)
+        fetchData()
     }
 
     static setNewGame(e) {
@@ -67,7 +71,6 @@ class Game {
             fetchData()
             Card.setCards(game.card_number)
             disableConfig(true)
-            return
         })
     }
 

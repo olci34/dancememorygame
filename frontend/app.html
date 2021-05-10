@@ -6,18 +6,18 @@
     </head>
     <body>
         <div class='config'>
-            <div class='logo'>Logo</div>
+            <div class='logo'><img alt='logo' src='logo.png'></img></div>
             <div class='player-info'>
                 <form id='form'>
-                    <label>Player Name:</label>
+                    <label>Player Name:</label><br>
                     <input id='player-name' name='player[name]'/><br>
-                    <label>Number of Cards</label>
-                    <input id='numberOfCards' type='number' name='numberOfCards'/>
+                    <label>Number of Cards:</label><br>
+                    <input id='numberOfCards' type='number' name='numberOfCards' max='16' min='4' step='2'/>
                     <input id='submit-button' type='submit' value='Start Game'/>
                 </form>
             </div>
             <div class='top-players'>
-                <strong>Top 5 Scores</strong>
+                <h3><strong>Top 5 Scores</strong></h3>
                 <div class='scores-chart'>
                     <table class="scores-table">
                         <colgroup>
