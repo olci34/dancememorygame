@@ -1,5 +1,5 @@
 const gameForm = document.getElementById('form')
-
+const flipRanks = document.getElementById('flip-ranks')
 fetchData()
 
 function fetchData() {

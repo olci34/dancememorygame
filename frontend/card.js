@@ -1,4 +1,5 @@
 let comparedCards = []
+let allCards = []
 let clicks = 0
 const cards = [
                 {sticker:'https://media.giphy.com/media/SUtvUAbKeBXiVdqCMB/giphy.gif', matchID: 1}, 
@@ -97,6 +98,7 @@ class Card {
     }
 
     static setCards(cardNumber) {
+        allCards = []
         let randomCards = [...cards]
         let pairCards = []
 
@@ -112,6 +114,7 @@ class Card {
             const randomCard = randomCards.splice(Math.floor(Math.random() * randomCards.length),1)[0];
             const newCard = new Card(randomCard.sticker, randomCard.matchID)
             const matchCard = new Card(randomCard.sticker, randomCard.matchID)
+            allCards.push(newCard,matchCard)
             pairCards.push(newCard,matchCard)
         }
     

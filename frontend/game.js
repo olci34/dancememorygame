@@ -73,10 +73,7 @@ class Game {
         })
     }
 
-    static victory() {
-        const DOMCards = document.querySelectorAll('.flip-card')
-        const cardClassNames = [...DOMCards].map(card => card.children[0].className)
-        const done = cardClassNames.every((name) => name === 'flip-card-inner')
-        return done
+    static victory() { // allcards array
+        return allCards.every(card => card.faceUp === true)
     }
 }
