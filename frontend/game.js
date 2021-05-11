@@ -52,7 +52,6 @@ class Game {
 
     static setNewGame(e) {
         e.preventDefault()
-        ///  MAKE A GAME POST REQUEST
         clicks = 0
         const gameID = document.getElementById('gameID')
         const playerName = e.target.children[0].children[0].textContent

@@ -7,7 +7,6 @@ class Player {
     }
     
     static createPlayer(target) {
-        debugger
         const playerName = target.children[2].value
         const gameCardNumber = parseInt(target.children[6].value, 10)
         const newPlayer = {player: {name: playerName, games_attributes: {"0": {card_number: gameCardNumber}}}} // game_attributes
@@ -25,7 +24,7 @@ class Player {
                     const lastGame = player.games[player.games.length - 1]
                     gameID.value = lastGame.id
                     document.querySelector('.click-counter').append(gameID)
-                    const currentPlayer = new Player(player.rank, player.name, lastGame.score)
+                    const currentPlayer = new Player(player.rank, player.name, player.latest_score)
                     currentPlayer.appendPlayer() 
                     Card.setCards(gameCardNumber)
                     disableConfig(false)

@@ -6,7 +6,7 @@ function fetchData() {
     const top5 = document.querySelector('.players')
     top5.innerHTML = ''
     fetch('http://localhost:3000/players').then(resp => resp.json())
-                                          .then(players => { 
+                                          .then(players => {
                                                             let sortedPlayers = players.sort( (p1, p2) => p1.rank - p2.rank)
                                                             let top5 = sortedPlayers.slice(0,5)
                                                             top5.forEach(function(player) {
