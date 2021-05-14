@@ -19,7 +19,7 @@ class Card {
     constructor(sticker, matchID, uniq) {
         this.sticker = sticker
         this.matchID = matchID
-        this.uniq = uniq
+        this.uniq = uniq // to find and flip unmatched cards when 3rd one clicked
         this.faceUp = false
     }
 
@@ -45,42 +45,38 @@ class Card {
 
     cardListener(e) {
         const clickBoard = document.getElementById('click-number')
-            clickBoard.innerText = `${++clicks}`
-            if (comparedCards.length === 0) {
+        clickBoard.innerText = `${++clicks}`
+        if (comparedCards.length === 0) {
+            comparedCards.push(this)
+            comparedCards[0].flipFaceUp(e.currentTarget)
+        } else if (comparedCards.length === 1) {
+            if (this.faceUp === false) { 
                 comparedCards.push(this)
-                comparedCards[0].flipFaceUp(e.currentTarget)
-            } else if (comparedCards.length === 1) {
-                if (this.faceUp === false) { 
-                    comparedCards.push(this)
-                    comparedCards[1].flipFaceUp(e.currentTarget)
-                    const matchResult = Card.matchCard(comparedCards[0], comparedCards[1])
+                comparedCards[1].flipFaceUp(e.currentTarget)
+                const matchResult = Card.matchCard(comparedCards[0], comparedCards[1])
+                if (matchResult) {
+                    comparedCards = []
+                    Game.changeScoreBoard()
                     const matchedDOMCards = document.querySelectorAll(`[title='${e.currentTarget.title}']`)
-                    if (matchResult) {
-
-                        const scoreBoard = document.getElementById('score')
-                        const score = Math.floor((parseInt(scoreBoard.textContent,10)) + 200000 / clicks)
-                        scoreBoard.textContent = `${score}`
-
-                        matchedDOMCards.forEach(function(DOMCard) {
+                    matchedDOMCards.forEach(function(DOMCard) {
                         DOMCard.style.pointerEvents = 'none'
                         DOMCard.children[1].style.backgroundColor = 'rgba(153, 205, 50, 0.267)'
-                        })
-                        comparedCards = []
-                    } 
-                } else if (this.faceUp === true) { // If clicked to a only faced up card
-                    comparedCards[0].flipFaceDown(e.currentTarget)
-                    comparedCards = []
-                }
-            } else if (comparedCards.length === 2) {
-                comparedCards.forEach(function(cardObj) {
-                    cardObj.flipFaceDown(document.getElementById(`${cardObj.uniq}`))
-                })
-                comparedCards = [this]
-                comparedCards[0].flipFaceUp(e.currentTarget)
+                    })
+                } 
+            } else if (this.faceUp === true) { // If clicked to a only faced up card
+                comparedCards[0].flipFaceDown(e.currentTarget)
+                comparedCards = []
             }
-            if (Game.victory()) {
-                Game.patchGame()
-            }
+        } else if (comparedCards.length === 2) {
+            comparedCards.forEach(function(cardObj) {
+                cardObj.flipFaceDown(document.getElementById(`${cardObj.uniq}`))
+            })
+            comparedCards = [this]
+            comparedCards[0].flipFaceUp(e.currentTarget)
+        }
+        if (Game.victory()) {
+            Game.patchGame()
+        }
     }
 
     static matchCard(card1,card2) {
@@ -88,8 +84,8 @@ class Card {
     }
 
     flipFaceUp(target) {
-        target.className = 'flip-card-inner'
-        this.faceUp = true
+        target.className = 'flip-card-inner' // to flip visually
+        this.faceUp = true // to flip programmatically
     }
 
     flipFaceDown(target) {
@@ -100,7 +96,6 @@ class Card {
     static setCards(cardNumber) {
         allCards = []
         let randomCards = [...cards]
-        let pairCards = []
 
         cardBoard.innerHTML = ''
         const score = document.getElementById('score')
@@ -115,10 +110,9 @@ class Card {
             const newCard = new Card(randomCard.sticker, randomCard.matchID)
             const matchCard = new Card(randomCard.sticker, randomCard.matchID)
             allCards.push(newCard,matchCard)
-            pairCards.push(newCard,matchCard)
         }
     
-        const shuffledCards = shuffle(pairCards)
+        const shuffledCards = shuffle(allCards)
         
         for (let i = 0; i < shuffledCards.length; i++) {
             shuffledCards[i].uniq = i

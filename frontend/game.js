@@ -47,7 +47,8 @@ class Game {
         congratDiv.append(congratLabelDiv,newGameForm)
         cardBoard.innerHTML = ''
         cardBoard.append(congratDiv)
-        fetchData()
+        disableConfig(false)
+        Player.listTopFive()
     }
 
     static setNewGame(e) {
@@ -65,9 +66,9 @@ class Game {
 
         fetch('http://localhost:3000/games',configGame)
         .then(resp => resp.json())
-        .then(function(game){
+        .then(function(game) {
             gameID.value = game.id
-            fetchData()
+            Player.listTopFive()
             Card.setCards(game.card_number)
             disableConfig(true)
         })
@@ -76,4 +77,11 @@ class Game {
     static victory() { // allcards array
         return allCards.every(card => card.faceUp === true)
     }
+
+    static changeScoreBoard() {
+        const scoreBoard = document.getElementById('score')
+        const score = Math.floor((parseInt(scoreBoard.textContent,10)) + 200000 / clicks)
+        scoreBoard.textContent = `${score}`
+    }
+    
 }

@@ -16,7 +16,7 @@ class Player {
             body: JSON.stringify(newPlayer)
         }
         
-            fetch('http://localhost:3000/players', configPlayer)
+        fetch('http://localhost:3000/players', configPlayer)
            .then(resp => resp.json())
            .then(player => {
                if (player.id) {
@@ -26,7 +26,7 @@ class Player {
                     document.querySelector('.click-counter').append(gameID)
                     const currentPlayer = new Player(player.rank, player.name, player.latest_score)
                     currentPlayer.appendPlayer() 
-                    Card.setCards(gameCardNumber)
+                    Card.setCards(lastGame.card_number)
                     disableConfig(false)
                 } else {
                    throw new Error(player.message) /// add alert DOM
@@ -41,5 +41,20 @@ class Player {
                             <td>${this.name}</td>
                             <td>${this.latest_score}</td>`
         topPlayersList.appendChild(newRow)
-        }
+    }
+
+    static listTopFive() {
+        const top5 = document.querySelector('.players')
+        top5.innerHTML = ''
+        fetch('http://localhost:3000/players')
+        .then(resp => resp.json())
+        .then(players => {
+            let sortedPlayers = players.sort( (p1, p2) => p1.rank - p2.rank)
+            let top5 = sortedPlayers.slice(0,5)
+            top5.forEach(function(player) {
+                const newPlayer = new Player(player.rank, player.name, player.latest_score)
+                newPlayer.appendPlayer()
+            })
+        })
+    }
 }
