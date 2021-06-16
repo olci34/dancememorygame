@@ -17,7 +17,7 @@ class Game {
                       "Accept": "application/json"},
             body: JSON.stringify(gameObj)
         }
-        fetch(`http://localhost:3000/games/${gameID}`, options).then(resp => resp.json()).then(game => setTimeout(() => this.showGameResults(game), 1000))
+        fetch(`https://dancememorydemo.herokuapp.com//games/${gameID}`, options).then(resp => resp.json()).then(game => setTimeout(() => this.showGameResults(game), 1000))
     }
 
     static showGameResults(game) {
@@ -64,7 +64,7 @@ class Game {
             body: JSON.stringify(gameObj)
         }
 
-        fetch('http://localhost:3000/games',configGame)
+        fetch('https://dancememorydemo.herokuapp.com//games',configGame)
         .then(resp => resp.json())
         .then(function(game) {
             gameID.value = game.id

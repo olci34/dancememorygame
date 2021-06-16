@@ -16,7 +16,7 @@ class Player {
             body: JSON.stringify(newPlayer)
         }
         
-        fetch('http://localhost:3000/players', configPlayer)
+        fetch('https://dancememorydemo.herokuapp.com//players', configPlayer)
            .then(resp => resp.json())
            .then(player => {
                if (player.id) {
@@ -46,7 +46,7 @@ class Player {
     static listTopFive() {
         const top5 = document.querySelector('.players')
         top5.innerHTML = ''
-        fetch('http://localhost:3000/players')
+        fetch('https://dancememorydemo.herokuapp.com//players')
         .then(resp => resp.json())
         .then(players => {
             let sortedPlayers = players.sort( (p1, p2) => p1.rank - p2.rank)
