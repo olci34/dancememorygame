@@ -47,7 +47,7 @@ class Game {
         congratDiv.append(congratLabelDiv,newGameForm)
         cardBoard.innerHTML = ''
         cardBoard.append(congratDiv)
-        disableConfig(false)
+        // disableConfig(false)
         Player.listTopFive()
     }
 
@@ -70,11 +70,11 @@ class Game {
             gameID.value = game.id
             Player.listTopFive()
             Card.setCards(game.card_number)
-            disableConfig(true)
+            // disableConfig(true)
         })
     }
 
-    static victory() { // allcards array
+    static victory() {
         return allCards.every(card => card.faceUp === true)
     }
 

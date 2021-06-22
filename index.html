@@ -7,14 +7,8 @@
     <body>
         <div class='config'>
             <div class='logo'><img alt='logo' src='logo.png'></img></div>
-            <div class='player-info'>
-                <form id='form'>
-                    <label>Player Name:</label><br>
-                    <input id='player-name' name='player[name]'/><br>
-                    <label>Number of Cards:</label><br>
-                    <input id='numberOfCards' type='number' name='numberOfCards' max='16' min='4' step='2'/>
-                    <input id='submit-button' type='submit' value='Start Game'/>
-                </form>
+            <div id='player-info'>
+
             </div>
             <div class='top-players'>
                 <h3><strong>Top 5 Scores</strong></h3>
@@ -45,7 +39,18 @@
         </div>
 
         <div class='card-board'>
-            
+            <div id='greeting-window'>
+                <h1>Welcome !</h1>
+                <br/>
+                <h2>Please enter your player name and number of cards</h2>
+                <form id='form'>
+                    <label>Player Name:</label><br>
+                    <input id='player-name' name='player[name]'/><br>
+                    <label>Number of Cards:</label><br>
+                    <input id='numberOfCards' type='number' name='numberOfCards' max='16' min='4' step='2'/>
+                    <input id='submit-button' type='submit' value='Start Game'/>
+                </form>
+            </div>
         </div>
 
         <div class='score'>

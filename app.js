@@ -7,11 +7,11 @@ gameForm.addEventListener('submit', function(e) {
     Player.createPlayer(e.target)
 })
 
-function disableConfig(value) {
-    document.getElementById('player-name').disabled = value
-    document.getElementById('numberOfCards').disabled = value
-    document.getElementById('submit-button').disabled = value
-}
+// function disableConfig(value) {
+//     document.getElementById('player-name').disabled = value
+//     document.getElementById('numberOfCards').disabled = value
+//     document.getElementById('submit-button').disabled = value
+// }
 
 function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {

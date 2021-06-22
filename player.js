@@ -25,11 +25,14 @@ class Player {
                     gameID.value = lastGame.id
                     document.querySelector('.click-counter').append(gameID)
                     const currentPlayer = new Player(player.rank, player.name, player.latest_score)
-                    currentPlayer.appendPlayer() 
+                    currentPlayer.appendPlayer()
+                    const playerLabel = document.createElement('h3')
+                    playerLabel.innerHTML = `Player: ${currentPlayer.name}`
+                    document.getElementById('player-info').appendChild(playerLabel)
                     Card.setCards(lastGame.card_number)
-                    disableConfig(false)
+                    // disableConfig(false)
                 } else {
-                   throw new Error(player.message) /// add alert DOM
+                   throw new Error(player.message)
                 }
            }).catch(err => alert(err))
     }

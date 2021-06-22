@@ -111,7 +111,7 @@ img {
   background-color:salmon;
 }
 
-.player-info, .top-players {
+#player-info, .top-players {
   min-width: 100%;
   margin-top: 60px;
   text-align: center;
@@ -127,3 +127,11 @@ img {
   height: 100px;
 }
 
+#greeting-window {
+  color: seashell;
+  border: solid 6px salmon;
+  padding-bottom: 30px;
+  text-align: center;
+  margin-top: 10%;
+  background-color: cadetblue;
+}
