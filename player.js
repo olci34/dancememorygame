@@ -52,6 +52,8 @@ class Player {
         fetch('https://dancememorydemo.herokuapp.com//players')
         .then(resp => resp.json())
         .then(players => {
+            Game.appendGameForm()
+            
             let sortedPlayers = players.sort( (p1, p2) => p1.rank - p2.rank)
             let top5 = sortedPlayers.slice(0,5)
             top5.forEach(function(player) {

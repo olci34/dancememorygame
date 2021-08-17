@@ -135,3 +135,8 @@ img {
   margin-top: 10%;
   background-color: cadetblue;
 }
+
+#form label,input{
+  text-align: center;
+  margin: 8px;
+}

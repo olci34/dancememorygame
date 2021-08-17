@@ -83,5 +83,32 @@ class Game {
         const score = Math.floor((parseInt(scoreBoard.textContent,10)) + 200000 / clicks)
         scoreBoard.textContent = `${score}`
     }
-    
+
+    static appendGameForm() {
+        const lineBreak1 = document.createElement('br')
+        const lineBreak2 = document.createElement('br')
+        document.getElementById('welcome-label').innerText = 'Please enter your player name and number of cards'
+        const gameForm = document.createElement('form')
+        gameForm.id = 'form'
+        const playerNameLabel = document.createElement('label')
+        playerNameLabel.innerText = 'Player Name: '
+        const playerNameInput = document.createElement('input')
+        playerNameInput.id = 'player-name'
+        playerNameInput.name = 'player[name]'
+        const cardNumLabel = document.createElement('label')
+        cardNumLabel.innerText = 'Number of Cards: '
+        const cardNumInput = document.createElement('input')
+        cardNumInput.id = 'numberOfCards'
+        cardNumInput.type = 'number'
+        cardNumInput.name = 'numberOfCards'
+        cardNumInput.max = '16'
+        cardNumInput.min = '4'
+        cardNumInput.step = '2'
+        const submitButton = document.createElement('input')
+        submitButton.type = 'submit'
+        submitButton.id = 'submit-button'
+        submitButton.value = 'Start Game'
+        gameForm.append(playerNameLabel,playerNameInput,lineBreak1,cardNumLabel,cardNumInput,lineBreak2,submitButton)
+        document.getElementById('greeting-window').append(gameForm)
+    }
 }
