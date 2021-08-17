@@ -79,9 +79,9 @@ class Game {
     }
 
     static changeScoreBoard() {
-        const scoreBoard = document.getElementById('score')
-        const score = Math.floor((parseInt(scoreBoard.textContent,10)) + 200000 / clicks)
-        scoreBoard.textContent = `${score}`
+        const scoreLabel = document.getElementById('score')
+        const score = Math.floor((parseInt(scoreLabel.textContent,10)) + 200000 / clicks)
+        scoreLabel.textContent = `${score}`
     }
 
     static appendGameForm() {

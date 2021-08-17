@@ -1,24 +1,72 @@
-div.config {
+html,body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background-image: radial-gradient(#faa307,#d00000);
+}
+
+#config {
     color: seashell;
     width: 15%;
     height: 100vh;
-    background-color: cadetblue;
     float: left;
+    overflow: auto;
 }
 
-div.card-board {
-    float: right;
-    width: 85%;
-    height: 80vh;
-    background-color: wheat;
+#click-counter {
+  position: absolute;
+  color: seashell;
+  top: 0;
+  right: 0;
+  width: 15%;
+  height: 50vh;
+  text-align: center;
+  overflow: auto;
+}
+
+#click-counter h1, #score-board h1 {
+  padding-top: 60%;
+}
+
+#score-board {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: seashell;
+  width: 15%;
+  height: 50vh;
+  text-align: center;
+  overflow: auto;
+}
+
+#card-panel {
+    position: absolute;
+    left: 15%;
+    width: 70%;
+    height: 100vh;
+    border-left: 8px dotted white;
+    border-right: 8px dotted white;
+    text-align: center;
+}
+
+#card-board {
+  margin: auto;
+  margin-top: 10%;
+  max-height: 80%;
+  max-width: 80%;
+  position: relative;
+  overflow: auto;
 }
 
 .flip-card {
-    float: left;
+    float:left;
     background-color: transparent;
-    width: 200px;
-    height: 260px;
-    margin: 8px;
+    width: 180px;
+    height: 160px;
+    margin: 12px;
     perspective: 1000px; /* Remove this if you don't want the 3D effect */
   }
 
@@ -54,27 +102,39 @@ div.card-board {
     height: 100%;
     -webkit-backface-visibility: hidden; /* Safari */
     backface-visibility: hidden;
+    border-radius: 20px;
   }
   
   /* Style the front side (fallback if image is missing) */
   .flip-card-front {
-    background-color:orchid;
+    border: 1px solid white;
+    background-color:#fee440;
+  }
+
+  .flip-card-front:hover {
+    box-shadow: white 0 0 20px;
+  }
+
+  .flip-card-back:hover {
+    box-shadow: white 0 0 20px;
   }
   
   /* Style the back side */
   .flip-card-back {
-    background-color: dodgerblue;
+    border: 1px solid white;
+    background-color: #e5383b;
     transform: rotateY(180deg);
   }
 
-div.top-players {
+#top-players {
     text-align: center;
     margin-top: 80px;
 }
 
-table.scores-table {
+#scores-table {
     width: 100%;
 }
+
 th,tr {
     text-align: center;
 }
@@ -86,29 +146,11 @@ img {
 
 .congrat-div {
     color: seashell;
-    border: solid 6px salmon;
+    border: 8px dotted white;
     padding-bottom: 30px;
     text-align: center;
     margin-top: 10%;
-    background-color: cadetblue;
-}
-
-.click-counter {
-  height: 10vh;
-  color: seashell;
-  float: right;
-  width: 85%;
-  text-align: center;
-  background-color:salmon;
-}
-
-.score {
-  height: 10vh;
-  color: seashell;
-  float: right;
-  width: 85%;
-  text-align: center;
-  background-color:salmon;
+    background-image: radial-gradient();
 }
 
 #player-info, .top-players {
@@ -121,24 +163,44 @@ img {
   width: 100px;
 }
 
-.logo {
+#logo {
   text-align: center;
   margin-top: 60px;
   height: 100px;
 }
 
 #greeting-window {
-  color: seashell;
-  border: solid 6px salmon;
-  padding-bottom: 30px;
+  color: white;
+  text-shadow: white 0 0 20px;
+  border: 8px dotted white;
+  border-radius: 25px;
   text-align: center;
-  margin-top: 10%;
-  background-color: cadetblue;
 }
 
 #form label,input{
+  border-radius: 20px;
+  font-size: 20px;
   text-align: center;
+  font-weight: 700;
   margin: 8px;
+}
+
+#new-game-form label,input {
+  border-radius: 20px;
+  font-size: 14px;
+  text-align: center;
+  font-weight: 700;
+  margin: 8px;
+}
+
+#submit-button {
+  padding: 8px;
+  border-radius: 20px;
+  background-color: white;
+}
+
+#submit-button:hover {
+  box-shadow: white 0 0 30px;
 }
 
 #note {

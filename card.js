@@ -12,7 +12,7 @@ const cards = [
                 {sticker:'https://media.giphy.com/media/BMzLC8TYr7489CAjPM/giphy.gif', matchID: 8}
             ]
 
-const cardBoard = document.querySelector('div.card-board')
+const cardBoard = document.querySelector('#card-board')
 
 class Card {
     
@@ -60,7 +60,7 @@ class Card {
                     const matchedDOMCards = document.querySelectorAll(`[title='${e.currentTarget.title}']`)
                     matchedDOMCards.forEach(function(DOMCard) {
                         DOMCard.style.pointerEvents = 'none'
-                        DOMCard.children[1].style.backgroundColor = 'rgba(153, 205, 50, 0.267)'
+                        DOMCard.children[1].style.backgroundColor = '#00bbf9'
                     })
                 } 
             } else if (this.faceUp === true) {

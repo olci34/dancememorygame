@@ -52,7 +52,7 @@ class Player {
     const gameID = document.getElementById("gameID");
     const lastGame = player.games[player.games.length - 1];
     gameID.value = lastGame.id;
-    document.querySelector(".click-counter").append(gameID);
+    document.querySelector("#click-counter").append(gameID);
     const currentPlayer = new Player(player.rank, player.name, player.latest_score);
     currentPlayer.appendPlayer();
     const playerLabel = document.createElement("h3");

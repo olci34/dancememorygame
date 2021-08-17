@@ -6,19 +6,18 @@
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
-        <div class='config'>
-            <div class='logo'><img alt='logo' src='logo.png'></img></div>
+        <div id='config'>
+            <div id='logo'><img alt='logo' src='logo.png'></img></div>
             <div id='player-info'>
-
             </div>
-            <div class='top-players'>
+            <div id='top-players'>
                 <h3><strong>Top 5 Scores</strong></h3>
-                <div class='scores-chart'>
-                    <table class="scores-table">
+                <div id='scores-chart'>
+                    <table id="scores-table">
                         <colgroup>
-                            <col class="playerRank">
-                            <col class="playerName">
-                            <col class="playerScore">
+                            <col id="playerRank">
+                            <col id="playerName">
+                            <col id="playerScore">
                         </colgroup>
                         <thead>
                             <tr>
@@ -34,19 +33,21 @@
                 </div>
             </div>
         </div>
-        <div class='click-counter'>
-            <input type='hidden' id='gameID'/>
-            <h1>Clicks: <span id='click-number'>0</span></h1>
-        </div>
-
-        <div class='card-board'>
+        <div id='card-panel'>
+        <div id='card-board'>
             <div id='greeting-window'>
                 <h1>Welcome !</h1>
                 <h2 id='welcome-label'>Data is loading... <i id='note'>(It can take up to 15 seconds. Thanks for your patience.)</i></h2>
             </div>
         </div>
+        </div>
 
-        <div class='score'>
+        <div id='click-counter'>
+            <input type='hidden' id='gameID'/>
+            <h1>Clicks: <span id='click-number'>0</span></h1>
+        </div>
+
+        <div id='score-board'>
             <h1>Score: <span id='score'>0</span></h1>
         </div>
         <script src='game.js'></script>
