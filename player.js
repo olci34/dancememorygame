@@ -7,8 +7,8 @@ class Player {
     }
     
     static createPlayer(target) {
-        const playerName = target.children[2].value
-        const gameCardNumber = parseInt(target.children[6].value, 10)
+        const playerName = target.children[1].value
+        const gameCardNumber = parseInt(target.children[4].value, 10)
         const newPlayer = {player: {name: playerName, games_attributes: {"0": {card_number: gameCardNumber}}}} // game_attributes
         const configPlayer = {
             method: 'POST',
@@ -47,13 +47,11 @@ class Player {
     }
 
     static listTopFive() {
-        const top5 = document.querySelector('.players')
-        top5.innerHTML = ''
-        fetch('https://dancememorydemo.herokuapp.com//players')
+        return fetch('https://dancememorydemo.herokuapp.com//players')
         .then(resp => resp.json())
         .then(players => {
-            Game.appendGameForm()
-            
+            const topFive = document.querySelector('.players')
+            topFive.innerHTML = ''
             let sortedPlayers = players.sort( (p1, p2) => p1.rank - p2.rank)
             let top5 = sortedPlayers.slice(0,5)
             top5.forEach(function(player) {

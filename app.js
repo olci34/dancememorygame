@@ -1,4 +1,10 @@
-Player.listTopFive();
+showGameForm()
+
+async function showGameForm(){
+  await Player.listTopFive()
+  Game.appendGameForm()
+  listenGameForm()
+}
 
 function listenGameForm() {
   const gameForm = document.getElementById("form");
